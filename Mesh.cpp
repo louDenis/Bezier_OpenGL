@@ -1,5 +1,6 @@
 #include "Mesh.h"
 
+
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, bool wireframe)
 {
     this->vertices = vertices;
@@ -12,7 +13,7 @@ void Mesh::cpyIntoStructure()
 {
     for (int i = 0; i < coords.size(); i++)
     {
-        //recopier tout dans la structure vertices, c moche mé c oké
+        //recopier tout dans la structure vertices, c moche mÃ© c okÃ©
         this->vertices[i].Position = coords[i];
         this->vertices[i].TexCoords = texCoords[i];
         this->vertices[i].Normal = normal[i];
@@ -126,7 +127,7 @@ void Mesh::setupMesh()
 //vt= texture coordinates
 //f= faces
 
-//coordcartésiennes
+//coordcartÃ©siennes
 
 
 void Mesh::Draw(Shader * shader)
@@ -136,6 +137,18 @@ void Mesh::Draw(Shader * shader)
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     shader->use();
+
+    // pass projection matrix to shader (note that in this case it could change every frame)
+    //glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
+    //shader->setMat4("projection", projection);
+
+    // camera/view transformation
+    //glm::mat4 view = camera.GetViewMatrix();
+    //shader->setMat4("view", view);
+
+    // render boxes
+    glBindVertexArray(VAO);
+
     glBindVertexArray(VAO);
     glDrawElements(GL_LINE_STRIP, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
