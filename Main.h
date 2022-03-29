@@ -5,7 +5,6 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "Camera.h"
 
 #pragma once
 
@@ -48,20 +47,18 @@ GLFWwindow* init_utils()
     {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-
+        
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
 
     // glad: load all OpenGL function pointers
     // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
-
+       
     }
 
     return window;
 }
-
