@@ -1,4 +1,4 @@
-﻿#include "Mesh.h"
+#include "Mesh.h"
 
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, bool wireframe)
 {
