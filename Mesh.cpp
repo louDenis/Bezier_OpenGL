@@ -1,4 +1,4 @@
-#include "Mesh.h"
+ï»¿#include "Mesh.h"
 
 Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices, bool wireframe)
 {
@@ -12,7 +12,7 @@ void Mesh::cpyIntoStructure()
 {
     for (int i = 0; i < coords.size(); i++)
     {
-        //recopier tout dans la structure vertices, c moche mé c oké
+        //recopier tout dans la structure vertices, c moche mï¿½ c okï¿½
         this->vertices[i].Position = coords[i];
         this->vertices[i].TexCoords = texCoords[i];
         this->vertices[i].Normal = normal[i];
@@ -36,7 +36,7 @@ void Mesh::loadObjModel(const char* filename)
     vector<string> lines;
     std::string line;
     getline(in, line);
-    
+
     while (getline(in, line)) {
         if (line.substr(0, 2) == "v ")
         {
@@ -56,19 +56,19 @@ void Mesh::loadObjModel(const char* filename)
             v >> U; v >> V;
             tex = glm::vec2(U, V);
             this->texCoords.push_back(tex);
-         }
+        }
 
-     
+
         else if (line.substr(0, 2) == "f ") {
             int a, b, c; //to store mesh index
             int A, B, C; //to store texture index
-         
+
             const char* chh = line.c_str();
             sscanf_s(chh, "f %i/%i %i/%i %i/%i", &a, &A, &b, &B, &c, &C); //here it read the line start with f and store the corresponding values in the variables
 
             a--; b--; c--;
             A--; B--; C--;
-           
+
             this->faceIndex.push_back(a); this->textureIndex.push_back(A);
             this->faceIndex.push_back(b); this->textureIndex.push_back(B);
             this->faceIndex.push_back(c); this->textureIndex.push_back(C);
@@ -126,12 +126,13 @@ void Mesh::setupMesh()
 //vt= texture coordinates
 //f= faces
 
-//coordcartésiennes
+//coordcartesiennes
 
 
-void Mesh::Draw(Shader * shader)
+/*
+void Mesh::Draw(Shader* shader)
 {
-   if (!(this->wireframe))
+    if (!(this->wireframe))
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     else
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -140,4 +141,4 @@ void Mesh::Draw(Shader * shader)
     glDrawElements(GL_LINE_STRIP, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 
-} 
+}*/

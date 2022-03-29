@@ -11,6 +11,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <windows.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 using namespace std;
 
 
@@ -38,7 +43,7 @@ public:
     void loadObjModel(const char * filename);
     void setupMesh();
     void cpyIntoStructure();
-    void Draw(Shader * shader);
+    //void Draw(Shader * shader);
 };
 
 
